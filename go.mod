@@ -1,4 +1,4 @@
-module github.com/hrishin/client-go-examples
+module github.com/hrishin/k8s-client-go-examples
 
 go 1.15
 
