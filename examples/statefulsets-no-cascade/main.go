@@ -68,11 +68,12 @@ func main() {
 	noCascade := metav1.DeleteOptions{
 		PropagationPolicy: &policy,
 	}
+
 	//Note: with client-go v0.18 + need the context parameter
 	err = clientset.AppsV1().StatefulSets(namespace).Delete(name, &noCascade)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	log.Printf("Deleted resource %s sucessfully, however dependent resources not \n", name)
+	log.Printf("Deleted the resource <%s> sucessfully, however dependent resources are not deleted such as pods\n", name)
 }
