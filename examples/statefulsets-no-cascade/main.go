@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"flag"
 	"log"
 
@@ -69,7 +68,8 @@ func main() {
 	noCascade := metav1.DeleteOptions{
 		PropagationPolicy: &policy,
 	}
-	err = clientset.AppsV1().StatefulSets(namespace).Delete(context.Background(), name, noCascade)
+	//Note: with client-go v0.18 + need the context parameter
+	err = clientset.AppsV1().StatefulSets(namespace).Delete(name, &noCascade)
 	if err != nil {
 		log.Fatal(err)
 	}
