@@ -99,4 +99,4 @@ ok  	github.com/hrishin/k8s-client-go-examples/examples/mock-watch-events	4.468s
 ```
 
 I hope this post will be useful. Would like to hear your reviews, feedback or your experience. 
-Happy programming! With Kubernetes.
+Happy programming with Kubernetes!
