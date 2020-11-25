@@ -10,4 +10,5 @@ In order to address this pain, this repository will try to hold commonly used cl
 
 ## Examples
  - [Delete the `Statefulset` without depeling it dependent resources such as pods](examples/statefulsets-no-cascade)
+ - [Mock the `watch` API to unit test watch events](examples/mock-watch-events)
 
