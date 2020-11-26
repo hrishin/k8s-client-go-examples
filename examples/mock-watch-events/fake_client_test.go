@@ -86,6 +86,7 @@ func Test_watch_pod_using_fake_client(t *testing.T) {
 		},
 	}
 	clients := simulatePodUpdates(pods)
+	expectedPhases := []v1.PodPhase{v1.PodPending, v1.PodUnknown, v1.PodRunning}
 
 	t.Log("Watch pod updates by pod name using the client-go API ")
 	{
@@ -104,6 +105,7 @@ func Test_watch_pod_using_fake_client(t *testing.T) {
 		t.Log("\tTest 1: checking watch event updates")
 		{
 			ch := watcher.ResultChan()
+			i := 0
 			for event := range ch {
 				pod, ok := event.Object.(*v1.Pod)
 
@@ -112,10 +114,13 @@ func Test_watch_pod_using_fake_client(t *testing.T) {
 				}
 				t.Logf("\t%s\tgot a pod update event", succeed)
 
-				if pod.Status.Phase == "" {
-					t.Fatalf("\t%s\t expecting pod phase but its nil", failed)
+				got := pod.Status.Phase
+				want := expectedPhases[i]
+				if got != want {
+					t.Fatalf("\t%s\t expecting pod phase %s but its %s", failed, want, got)
 				}
-				t.Logf("\t%s\tgot a pod phase values %v", succeed, pod.Status.Phase)
+				t.Logf("\t%s\texpecting pod phase %s and got %s", succeed, want, got)
+				i++
 			}
 		}
 	}
