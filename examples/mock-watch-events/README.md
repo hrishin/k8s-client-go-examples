@@ -83,19 +83,19 @@ Test the example by running `make test-watch-pod`
 ➜  mock-watch-events git:(mock-watch) ✗ make test-watch-pod
 go test -run Test_watch_pod_using_fake_client -v
 === RUN   Test_watch_pod_using_fake_client
-    fake_client_test.go:90: Watch pod updates by pod name using the client-go API 
-    fake_client_test.go:96: 	Test 0: checking the error code response
-    fake_client_test.go:101: 	✓	client go has return no error.
-    fake_client_test.go:104: 	Test 1: checking watch event updates
-    fake_client_test.go:113: 	✓	got a pod update event
-    fake_client_test.go:118: 	✓	got a pod phase values Pending
-    fake_client_test.go:113: 	✓	got a pod update event
-    fake_client_test.go:118: 	✓	got a pod phase values Unknown
-    fake_client_test.go:113: 	✓	got a pod update event
-    fake_client_test.go:118: 	✓	got a pod phase values Running
---- PASS: Test_watch_pod_using_fake_client (0.90s)
+    fake_client_test.go:91: Watch pod updates by pod name using the client-go API 
+    fake_client_test.go:97:     Test 0: checking the error code response
+    fake_client_test.go:102:    ✓       client go has return no error.
+    fake_client_test.go:105:    Test 1: checking watch event updates
+    fake_client_test.go:115:    ✓       got a pod update event
+    fake_client_test.go:122:    ✓       expecting pod phase Pending and got Pending
+    fake_client_test.go:115:    ✓       got a pod update event
+    fake_client_test.go:122:    ✓       expecting pod phase Unknown and got Unknown
+    fake_client_test.go:115:    ✓       got a pod update event
+    fake_client_test.go:122:    ✓       expecting pod phase Running and got Running
+--- PASS: Test_watch_pod_using_fake_client (0.91s)
 PASS
-ok  	github.com/hrishin/k8s-client-go-examples/examples/mock-watch-events	4.468s
+ok      github.com/hrishin/k8s-client-go-examples/examples/mock-watch-events    1.490s
 ```
 
 I hope this post will be useful. Would like to hear your reviews, feedback or your experience. 
